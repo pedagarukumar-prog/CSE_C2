@@ -1,0 +1,66 @@
+{
+  "evaluation_type": "storyvox-pipeline",
+  "sample_count": 2,
+  "languages": [
+    "en"
+  ],
+  "created_at": "2026-09-08T10:41:44.965416+00:00",
+  "averages": {
+    "prompt_story_similarity": 0.8018,
+    "rougeL_prompt_vs_story": 0.1787,
+    "wer": null,
+    "cer": null,
+    "story_time_s": 0.0,
+    "tts_time_s": 0.225,
+    "rtf": 0.0056
+  },
+  "metric_notes": {
+    "prompt_story_similarity": "Cosine similarity between prompt and generated story (multilingual sentence model when available, otherwise TF-IDF proxy). Higher means the story stayed on-topic.",
+    "rougeL_prompt_vs_story": "ROUGE-L F1 overlap between prompt and story; low values are normal since stories expand on prompts.",
+    "wer": "Word Error Rate between story text and ASR transcription of narration. Lower is clearer. Computed only when TTS+ASR both ran.",
+    "cer": "Character Error Rate, same comparison as WER but character-level.",
+    "story_time_s": "Mean story-generation latency per sample.",
+    "tts_time_s": "Mean narration synthesis latency per sample.",
+    "rtf": "Real-time factor = synthesis_time / audio_duration. Below 1.0 means faster than real time."
+  },
+  "asr_model": "openai/whisper-small",
+  "story_model": "Qwen/Qwen3-0.6B",
+  "samples": [
+    {
+      "prompt": "Tell a story about a young inventor who discovers a hidden library.",
+      "language_code": "en",
+      "style": "Adventure",
+      "title": "Tell a story about a young (Adventure)",
+      "model": "storyvox-local-fallback-v1",
+      "story_time_s": 0.0,
+      "story_words": 112,
+      "prompt_story_similarity": 0.811,
+      "similarity_method": "tf-idf cosine (offline similarity proxy)",
+      "rougeL_prompt_vs_story": 0.1967,
+      "tts_model": "system-tts-offline-fallback",
+      "tts_time_s": 0.278,
+      "audio_duration_s": 41.427,
+      "rtf": 0.0067,
+      "asr_error": "Speech recognition model could not be loaded. Check the server log.",
+      "total_time_s": 5.835
+    },
+    {
+      "prompt": "A kind robot helps a village during a storm.",
+      "language_code": "en",
+      "style": "Bedtime",
+      "title": "A kind robot helps a village (Bedtime)",
+      "model": "storyvox-local-fallback-v1",
+      "story_time_s": 0.0,
+      "story_words": 105,
+      "prompt_story_similarity": 0.7926,
+      "similarity_method": "tf-idf cosine (offline similarity proxy)",
+      "rougeL_prompt_vs_story": 0.1607,
+      "tts_model": "system-tts-offline-fallback",
+      "tts_time_s": 0.172,
+      "audio_duration_s": 38.554,
+      "rtf": 0.0045,
+      "asr_error": "Speech recognition model could not be loaded. Check the server log.",
+      "total_time_s": 0.179
+    }
+  ]
+}
